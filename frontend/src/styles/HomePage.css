@@ -1,0 +1,335 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1f1f1f;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container */
+.home-container {
+  height: 100vh;
+  background: linear-gradient(to bottom, #003973, #005b96, #008cba, #00bfff);
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  animation: oceanWaves 10s ease-in-out infinite alternate;
+  
+}
+
+/* Optional ocean-like wave effect */
+@keyframes oceanWaves {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: transparent;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.menu-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 100px;
+  
+}
+
+.hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.hero-section h1 {
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 1;
+  color: white;
+}
+
+.underline {
+  width: 550px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid white;
+}
+
+.hero-section p {
+  max-width: 600px;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  color: white;
+}
+
+/* Explore Now button */
+.explore-btn {
+  width: 120px;
+  height: 35px;
+  font-size: 0.75rem;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.explore-btn:hover {
+  background-color: #ddd;
+}
+
+/* Welcome Link */
+.welcome-link-container {
+  margin-top: 120px;
+  align-self: flex-end;
+}
+
+.welcome-link {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: 'Caveat', cursive;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+  animation: colorChange 2s infinite;
+}
+
+.welcome-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: underline;
+}
+
+@keyframes colorChange {
+  0%   { color: #00f0ff; border-color: #00f0ff; }
+  25%  { color: #ff6ec4; border-color: #ff6ec4; }
+  50%  { color: #ffc107; border-color: #ffc107; }
+  75%  { color: #4caf50; border-color: #4caf50; }
+  100% { color: #00f0ff; border-color: #00f0ff; }
+}
+
+/* Slide-in Side Menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.6);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  transition: right 0.4s ease;
+  z-index: 999;
+  padding: 30px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+/* Close Button */
+.menu-close {
+  align-self: flex-end;
+  margin-right: 10px;
+  font-size: 1.6rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Icon Section */
+.menu-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.menu-icons a {
+  color: white;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.menu-icons a:hover {
+  color: #ffd700;
+}
+
+/* Hire Me */
+.menu-hire {
+  margin-bottom: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Slider inside menu */
+.slider-container {
+  width: 260px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slide-text {
+  font-size: 1.1rem;
+  color: white;
+  text-align: center;
+  transition: opacity 0.5s ease;
+}
+
+.hire-me-btn {
+  background-color: white;
+  color: #1f1f1f;
+  padding: 8px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.hire-me-btn:hover {
+  background-color: #ddd;
+}
+.sea-animals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none; /* So clicks go through */
+  z-index: 0;
+}
+
+.sea-animals span {
+  position: absolute;
+  font-size: 2rem;
+  animation: floatUp 10s linear infinite;
+  opacity: 0.8;
+}
+
+/* Position each animal randomly */
+.fish {
+  left: 10%;
+  bottom: -10%;
+  animation-delay: 0s;
+}
+
+.turtle {
+  left: 40%;
+  bottom: -15%;
+  animation-delay: 3s;
+}
+
+.octopus {
+  left: 70%;
+  bottom: -20%;
+  animation-delay: 6s;
+}
+
+.bubble {
+  left: 85%;
+  bottom: -5%;
+  animation-delay: 1.5s;
+}
+
+/* Floating animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+.creature {
+  cursor: pointer;
+  font-size: 2rem;
+  transition: transform 0.2s;
+}
+
+.blast {
+  animation: explode 0.4s ease forwards;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}

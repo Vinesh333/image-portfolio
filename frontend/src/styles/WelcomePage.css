@@ -1,0 +1,178 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container */
+.welcome-container {
+  height: 100vh;
+  background-color: #222223;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Back Button */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 14px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.3);
+  z-index: 1000;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  height: 60%;
+}
+
+/* Circular Image Section - 3D and Bigger Size */
+.image-section {
+  width: 300px; /* increased size */
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  perspective: 1500px; /* Increased perspective for stronger 3D effect */
+  transition: transform 0.6s; /* Smooth transition for the 3D effect */
+}
+
+.salon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.6s, scale 0.3s; /* Smooth transition for both 3D effect and zoom */
+  transform-style: preserve-3d; /* Enable 3D space for the image */
+  backface-visibility: hidden; /* Hides the back face when flipped */
+}
+
+/* Hover Effect to Rotate and Zoom Image in 3D */
+.image-section:hover .salon-image {
+  transform: rotateY(30deg) scale(1.1); /* Increased rotation and zoom on hover */
+}
+
+.salon-image.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Text Section */
+.text-section {
+  width: 55%;
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  color: white;
+}
+
+.description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  color: white;
+  max-width: 600px;
+}
+
+/* Welcome Title Button */
+.welcome-title {
+  position: absolute;
+  bottom: 50px;
+  right: 60px;
+  background-color: white;
+  color: #1f1f1f;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.welcome-title:hover {
+  background-color: rgba(231, 231, 231, 0.932);
+}
+
+/* Decorative Elements */
+.digital-section,
+.marketing-section {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+  color: white;
+}
+
+.digital-section {
+  top: 50px;
+  right: 60px;
+}
+
+.marketing-section {
+  bottom: 50px;
+  left: 80px;
+}
+
+.fancy-letter {
+  font-family: 'Cursive', serif;
+  font-size: 4.5rem;
+  margin-right: 10px;
+  color: white;
+}
+
+.line-left,
+.line-right {
+  height: 1px;
+  width: 400px;
+  background-color: white;
+  margin: 1px;
+}
+
+.stars {
+  font-size: 5rem;
+  position: absolute;
+  color: white;
+}
+
+.top-right {
+  top: 50px;
+  right: 20px;
+}
+
+.bottom-left {
+  bottom: 50px;
+  left: 20px;
+}

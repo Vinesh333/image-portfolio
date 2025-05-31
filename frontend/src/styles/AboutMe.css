@@ -1,0 +1,75 @@
+/* Full screen black background */
+.about-container {
+  background-color: black;
+  color: white;
+  min-height: 100vh; /* Full screen height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+}
+
+/* Back button in the top-left corner */
+.about-container .back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: rgb(255, 255, 255); /* Custom color */
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.about-container .back-button:hover {
+  color: rgb(243, 241, 241); /* Hover effect */
+}
+
+/* Image Styling */
+.about-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.about-images img {
+  width: 30%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.about-images img:hover {
+  transform: scale(1.05);
+}
+
+/* Centered Title with White Line */
+.title-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.title-container h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+}
+
+.white-line {
+  width: 450px;
+  height: 2px;
+  background-color: white;
+  margin: 10px auto; /* Centering the line */
+}
+
+/* Text Below the Title */
+.about-text {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  text-align: center;
+  width: 100%;
+}

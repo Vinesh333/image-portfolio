@@ -1,0 +1,48 @@
+/* Full-Screen Backdrop */
+.full-image-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: zoom-out;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Animated Background for a Unique Effect */
+.animated-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  animation: fadeBg 10s infinite alternate;
+  filter: blur(80px);
+  z-index: -1;
+}
+
+/* Background Animation */
+@keyframes fadeBg {
+  0% {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+  }
+  50% {
+      background: linear-gradient(135deg, #355c7d, #6c5b7b);
+  }
+  100% {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+  }
+}
+
+/* Full Image Styling */
+.full-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 16px;
+  object-fit: contain;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+}

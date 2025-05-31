@@ -1,0 +1,155 @@
+@import url('https://fonts.cdnfonts.com/css/tab-pearl'); /* TAB PEARL font */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.checkout-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative;
+}
+
+/* ART HISTORY title styles */
+.checkout-title {
+  position: absolute;
+  top: 70%;
+  font-family: 'TAB PEARL', serif;
+  font-weight: bold;
+  text-align: left;
+  font-size: 100px; /* Try bigger */
+  color: rgb(255, 0, 0); /* Bright red for testing */
+}
+
+.art-text,
+.history-text {
+  display: block;
+  font-size: inherit; /* inherit from .checkout-title */
+  color: inherit;     /* inherit color too */
+  position: relative;
+  right: 80px;
+  margin-top: 0; /* Optional reset */
+}
+
+.history-text {
+  display: block;
+  color: rgb(81, 77, 77);
+  margin-top: 10px;
+}
+
+/* Back button - top left */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  text-decoration: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Date - bottom left */
+.checkout-date {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 14px;
+  color: #c5c5c5;
+}
+
+/* Presenter name - bottom right */
+.checkout-presenter {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Contents button + arrow - bottom right (above presenter) */
+.contents-container {
+  position: absolute;
+  bottom: 60px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.arrow {
+  font-size: 2rem;
+  color: white;
+  text-shadow: 1px 1px 5px black;
+  transform: rotate(180deg); /* left arrow turned right */
+}
+
+.contents-button {
+  background-color: #ffcc00;
+  color: black;
+  padding: 10px 18px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.contents-button:hover {
+  background-color: #ffaa00;
+}
+
+/* Creative Portfolio Text (centered) */
+.creative-title {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  text-align: center;
+  color: rgb(230, 221, 221);
+  z-index: 2;
+}
+
+.creative-text {
+  display: block;
+  font-family: 'Georgia', serif;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.portfolio-text {
+  display: block;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 100px;
+  font-weight: bold;
+  margin-top: -10px;
+  position: relative;
+  z-index: 2;
+}
+
+.byline {
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  color: #333;
+  margin-top: 10px;
+}
+
+

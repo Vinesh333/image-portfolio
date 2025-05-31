@@ -1,0 +1,50 @@
+.wallpaper-container {
+    background-color: black;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .wallpaper-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .file-input {
+    margin-bottom: 10px;
+  }
+  
+  .upload-button {
+    background-color: green;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .upload-button:hover {
+    background-color: darkgreen;
+  }
+  

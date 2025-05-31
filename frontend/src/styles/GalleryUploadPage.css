@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+
+
+.gallery-upload-container {
+  background-color: #c5cbc5;
+  color: black;
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* In GalleryUploadPage.css */
+.gallery-back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: white !important;
+  color: black;
+  border: 2px solid rgb(206, 199, 199);
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.back-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.gallery-display {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.2); /* Slight dark shadow effect */
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5); /* Deep shadow */
+  border-radius: 20px;
+}
+
+.image-container {
+  width: 100%;
+  height: 360px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.clickable-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+
+.clickable-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Swiper Specific Styles */
+.swiper-slide-active .image-container {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  color: black;
+  border: none;
+  font-size: 50px;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease-in-out;
+  z-index: 20;
+}
+
+.prev-btn {
+  left: -60px;
+}
+
+.next-btn {
+  right: -60px;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  color: #555;
+}
+
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.fullscreen-content {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.fullscreen-image {
+  width: auto;
+  height: 90vh;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  color: black;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.close-btn:hover {
+  background: black;
+  color: white;
+}
+
+.download-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.download-btn:hover {
+  background: black;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .prev-btn { left: -40px; }
+  .next-btn { right: -40px; }
+}
+
+@media (max-width: 768px) {
+  .prev-btn { left: -30px; }
+  .next-btn { right: -30px; }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    height: 200px;
+  }
+  .prev-btn { left: -20px; font-size: 30px; }
+  .next-btn { right: -20px; font-size: 30px; }
+}
+/* Gallery Mini Title */
+.gallery-mini-title {
+  font-family: "Dancing Script", cursive; /* Different font style */
+  font-size: 28px;
+  color: black;
+  margin: 20px 0;
+  position: relative;
+}
+
+.title-underline {
+  width: 50px;
+  height: 2px;
+  background-color: black;
+  margin: 5px auto 0;
+}
