@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000; // Use Render's PORT or fallback
 
 app.use(cors());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -35,7 +35,8 @@ app.post('/upload', upload.single('image'), (req, res) => {
 app.get('/images', (req, res) => {
   fs.readdir('uploads', (err, files) => {
     if (err) return res.status(500).send('Error reading files');
-    const urls = files.map(file => `http://localhost:${PORT}/uploads/${file}`);
+    const baseUrl = process.env.BASE_URL || ''; // Set if needed on Render
+    const urls = files.map(file => `${baseUrl}/uploads/${file}`);
     res.json(urls);
   });
 });
@@ -43,7 +44,10 @@ app.get('/images', (req, res) => {
 // Delete image
 app.delete('/delete', (req, res) => {
   const { url } = req.body;
+  if (!url) return res.status(400).send('No URL provided');
   const filename = url.split('/uploads/')[1];
+  if (!filename) return res.status(400).send('Invalid URL');
+
   const filePath = path.join(__dirname, 'uploads', filename);
 
   fs.unlink(filePath, err => {
@@ -52,5 +56,17 @@ app.delete('/delete', (req, res) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+// -------- Serve React frontend build --------
+// NOTE: Adjust path to frontend build relative to backend folder
+const buildPath = path.join(__dirname, '../frontend/build');
+
+app.use(express.static(buildPath));
+
+// For any route not handled above, serve React index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
