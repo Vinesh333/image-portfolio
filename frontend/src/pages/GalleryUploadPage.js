@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -7,20 +6,23 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "../styles/GalleryUploadPage.css";
 
+// Helper to import all images from the gallery_uploads folder recursively and case-insensitive
+function importAll(r) {
+  return r.keys().map((key) => r(key).default || r(key));
+}
+
+const galleryImages = importAll(
+  require.context("../assets/gallery_uploads", true, /\.(png|jpe?g|webp|gif)$/i)
+);
 
 const GalleryUploadPage = () => {
   const [uploadedImages, setUploadedImages] = useState([]);
   const [fullscreenImage, setFullscreenImage] = useState(null);
   const navigate = useNavigate();
 
-  const fetchUploadedImages = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/gallery-images");
-      setUploadedImages(response.data);
-    } catch (error) {
-      console.error("Error fetching gallery images:", error);
-    }
-  };
+  useEffect(() => {
+    setUploadedImages(galleryImages);
+  }, []);
 
   const handleImageClick = (image) => {
     setFullscreenImage(image);
@@ -47,10 +49,6 @@ const GalleryUploadPage = () => {
     }
   };
 
-  useEffect(() => {
-    fetchUploadedImages();
-  }, []);
-
   return (
     <div className="gallery-upload-container">
       <button className="back-button" onClick={() => navigate(-1)}>
@@ -58,14 +56,12 @@ const GalleryUploadPage = () => {
       </button>
 
       <h2>Serene Stills - A Photographic Tale</h2>
-      
-      {/* Gallery Mini Title */}
+
       <div className="gallery-mini-title">
         Gallery
         <div className="title-underline"></div>
       </div>
 
-      {/* Gallery Display with Swiper */}
       <div className="gallery-display">
         <Swiper
           modules={[Navigation]}
@@ -89,30 +85,27 @@ const GalleryUploadPage = () => {
             <SwiperSlide key={index}>
               <div className="image-container">
                 <img
-                  src={image}
-                  alt={`Gallery ${index}`}
-                  className="clickable-image"
-                  onClick={() => handleImageClick(image)}
-                />
+  
+                src={image}
+  alt={`Gallery ${index}`}
+  className="clickable-image"
+  onClick={() => handleImageClick(image)}
+  style={{ borderRadius: "15px" }}
+/>
+
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* Navigation Buttons */}
         <button className="prev-btn">{"<"}</button>
         <button className="next-btn">{">"}</button>
       </div>
 
-      {/* Fullscreen Image View */}
       {fullscreenImage && (
         <div className="fullscreen-overlay" onClick={closeFullscreen}>
-          <div className="fullscreen-content">
-            <img
-              src={fullscreenImage}
-              alt="Fullscreen"
-              className="fullscreen-image"
-            />
+          <div className="fullscreen-content" onClick={(e) => e.stopPropagation()}>
+            <img src={fullscreenImage} alt="Fullscreen" className="fullscreen-image" />
             <button className="close-btn" onClick={closeFullscreen}>
               ✖
             </button>

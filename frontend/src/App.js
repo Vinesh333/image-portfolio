@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+
 import MainScreen from "./components/MainScreen";
 import GalleryApp from "./components/GalleryApp";
 import AboutMe from "./pages/AboutMe";
@@ -15,6 +16,7 @@ import WelcomePage from "./components/WelcomePage";
 import HireMeForm from "./pages/HireMeForm";
 import ChatButton from "./components/ChatButton";
 
+// Route listener to hide Tawk.to widget outside /contact
 function RouteChangeListener() {
   const location = useLocation();
 
@@ -30,7 +32,6 @@ function RouteChangeListener() {
 }
 
 function App() {
-  // Optional: set basename if your app is hosted under a subpath (usually "/")
   const basename = process.env.PUBLIC_URL || "/";
 
   return (

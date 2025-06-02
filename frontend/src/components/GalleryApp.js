@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import FullImageBackdrop from "../components/FullImageBackdrop";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
 import "../styles/GalleryApp.css";
+
+// Automatically import all images in src/assets/images/
+function importAll(r) {
+  return r.keys().map(r);
+}
+
+const localImages = importAll(
+  require.context("../assets/images", false, /\.(png|jpe?g|webp|gif)$/)
+);
 
 function GalleryApp() {
   const [gallery, setGallery] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
 
-  const fetchImages = async () => {
-    try {
-      const res = await axios.get("http://localhost:5000/images");
-      setGallery(res.data);
-    } catch (err) {
-      console.error("Fetching images failed:", err);
-    }
-  };
-
   useEffect(() => {
-    fetchImages();
+    setGallery(localImages);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = "hidden"; // Lock main screen scroll
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "auto"; // Restore scroll on unmount
+      document.body.style.overflow = "auto";
     };
   }, []);
 
@@ -35,15 +34,15 @@ function GalleryApp() {
       style={{
         padding: "40px 20px",
         textAlign: "center",
-        backgroundColor: "#1a1a1a", // dim dark background
+        backgroundColor: "#1a1a1a",
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
         color: "white",
       }}
     >
-      <h1 className="magic-title"> Magic of Nature Portfolio </h1>
-      <h2 className="magic-subtitle">Custom Image Gallary</h2>
+      <h1 className="magic-title">Magic of Nature Portfolio</h1>
+      <h2 className="magic-subtitle">Custom Image Gallery</h2>
 
       <button
         onClick={() => navigate("/welcome")}
@@ -65,7 +64,14 @@ function GalleryApp() {
         ← Back
       </button>
 
-      <div style={{ position: "relative", padding: "20px", display: "flex", justifyContent: "center" }}>
+      <div
+        style={{
+          position: "relative",
+          padding: "20px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <div
           className="gallery-container"
           style={{
@@ -74,7 +80,8 @@ function GalleryApp() {
             borderRadius: "15px",
             position: "relative",
             padding: "10px",
-            background: "radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(40, 40, 40, 0.95) 100%)",
+            background:
+              "radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(40, 40, 40, 0.95) 100%)",
           }}
         >
           <div
@@ -106,7 +113,7 @@ function GalleryApp() {
                 >
                   <img
                     src={img}
-                    alt={`uploaded-${idx}`}
+                    alt={`gallery-${idx}`}
                     className="gallery-image"
                     onClick={() => setSelectedImage(img)}
                     style={{
@@ -127,7 +134,10 @@ function GalleryApp() {
       </div>
 
       {selectedImage && (
-        <FullImageBackdrop imageUrl={selectedImage} onClose={() => setSelectedImage(null)} />
+        <FullImageBackdrop
+          imageUrl={selectedImage}
+          onClose={() => setSelectedImage(null)}
+        />
       )}
     </div>
   );

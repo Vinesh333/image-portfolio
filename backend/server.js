@@ -5,12 +5,12 @@ const path = require("path");
 const fs = require("fs");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 app.use(cors());
 app.use(express.json());
 
-// Serve uploaded images statically
+// Serve uploaded images
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/gallery_uploads", express.static(path.join(__dirname, "gallery_uploads")));
 
@@ -18,18 +18,12 @@ app.use("/gallery_uploads", express.static(path.join(__dirname, "gallery_uploads
 if (!fs.existsSync("uploads")) fs.mkdirSync("uploads");
 if (!fs.existsSync("gallery_uploads")) fs.mkdirSync("gallery_uploads");
 
-// Helper to get base URL dynamically
-const getBaseUrl = (req) => {
-  return `${req.protocol}://${req.get('host')}`;
-};
-
 // Fetch Explore Now images
 app.get("/images", (req, res) => {
   const uploadsDir = path.join(__dirname, "uploads");
   fs.readdir(uploadsDir, (err, files) => {
     if (err) return res.status(500).json({ error: "Unable to scan folder" });
-    const baseUrl = getBaseUrl(req);
-    const imageUrls = files.map(file => `${baseUrl}/uploads/${file}`);
+    const imageUrls = files.map(file => `http://localhost:${PORT}/uploads/${file}`);
     res.json(imageUrls);
   });
 });
@@ -39,8 +33,7 @@ app.get("/gallery-images", (req, res) => {
   const galleryDir = path.join(__dirname, "gallery_uploads");
   fs.readdir(galleryDir, (err, files) => {
     if (err) return res.status(500).json({ error: "Unable to scan folder" });
-    const baseUrl = getBaseUrl(req);
-    const imageUrls = files.map(file => `${baseUrl}/gallery_uploads/${file}`);
+    const imageUrls = files.map(file => `http://localhost:${PORT}/gallery_uploads/${file}`);
     res.json(imageUrls);
   });
 });
@@ -62,8 +55,7 @@ app.post("/upload", uploadExploreNow.array("images", 10), (req, res) => {
   if (!req.files || req.files.length === 0) {
     return res.status(400).json({ error: "No files uploaded" });
   }
-  const baseUrl = getBaseUrl(req);
-  const imageUrls = req.files.map(file => `${baseUrl}/uploads/${file.filename}`);
+  const imageUrls = req.files.map(file => `http://localhost:${PORT}/uploads/${file.filename}`);
   res.json({ imageUrls });
 });
 
@@ -72,12 +64,11 @@ app.post("/gallery-upload", uploadGalleryNow.array("images", 10), (req, res) => 
   if (!req.files || req.files.length === 0) {
     return res.status(400).json({ error: "No files uploaded" });
   }
-  const baseUrl = getBaseUrl(req);
-  const imageUrls = req.files.map(file => `${baseUrl}/gallery_uploads/${file.filename}`);
+  const imageUrls = req.files.map(file => `http://localhost:${PORT}/gallery_uploads/${file.filename}`);
   res.json({ imageUrls });
 });
 
-// Hire Me Form
+// Save Hire Me Form Data to a JSON file
 app.post("/hire", (req, res) => {
   const formData = req.body;
   const formFilePath = path.join(__dirname, "hire-forms.json");
@@ -95,9 +86,9 @@ app.post("/hire", (req, res) => {
   res.status(200).json({ message: "Form submitted and saved successfully!" });
 });
 
-// View form submissions
+// View form submissions in a basic HTML table
 app.get("/view-submissions", (req, res) => {
-  const filePath = path.join(__dirname, "hire-forms.json");
+  const filePath = path.join(__dirname, "hire-forms.json"); // ✅ FIXED filename
 
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) return res.status(500).send("Unable to read submissions.");
@@ -189,14 +180,6 @@ app.get("/view-submissions", (req, res) => {
 
     res.send(html);
   });
-});
-
-// Serve React frontend build files (adjust if your build folder path is different)
-const buildPath = path.join(__dirname, "build");
-app.use(express.static(buildPath));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(buildPath, "index.html"));
 });
 
 app.listen(PORT, () => {
