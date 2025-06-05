@@ -28,18 +28,18 @@ body, html {
   font-family: 'TAB PEARL', serif;
   font-weight: bold;
   text-align: left;
-  font-size: 100px; /* Try bigger */
-  color: rgb(255, 0, 0); /* Bright red for testing */
+  font-size: 100px;
+  color: rgb(255, 0, 0);
 }
 
 .art-text,
 .history-text {
   display: block;
-  font-size: inherit; /* inherit from .checkout-title */
-  color: inherit;     /* inherit color too */
+  font-size: inherit;
+  color: inherit;
   position: relative;
   right: 80px;
-  margin-top: 0; /* Optional reset */
+  margin-top: 0;
 }
 
 .history-text {
@@ -97,7 +97,7 @@ body, html {
   font-size: 2rem;
   color: white;
   text-shadow: 1px 1px 5px black;
-  transform: rotate(180deg); /* left arrow turned right */
+  transform: rotate(180deg);
 }
 
 .contents-button {
@@ -152,4 +152,52 @@ body, html {
   margin-top: 10px;
 }
 
+/* ========== ✅ MOBILE RESPONSIVENESS ========== */
+@media (max-width: 768px) {
+  .checkout-title {
+    font-size: 40px;
+    top: 60%;
+    right: 0;
+    left: 20px;
+  }
 
+  .art-text,
+  .history-text {
+    right: 0;
+    font-size: 1.5rem;
+  }
+
+  .creative-text {
+    font-size: 20px;
+  }
+
+  .portfolio-text {
+    font-size: 48px;
+    margin-top: 5px;
+  }
+
+  .back-button {
+    top: 10px;
+    left: 10px;
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .checkout-date,
+  .checkout-presenter {
+    font-size: 12px;
+  }
+
+  .contents-button {
+    font-size: 1rem;
+    padding: 8px 14px;
+  }
+
+  .arrow {
+    font-size: 1.5rem;
+  }
+
+  .creative-title {
+    top: 30%;
+  }
+}

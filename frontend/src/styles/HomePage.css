@@ -333,3 +333,118 @@ body {
     opacity: 0;
   }
 }
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: 0 60px;
+  }
+
+  .hero-section h1 {
+    font-size: 4rem;
+  }
+
+  .underline {
+    width: 300px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 30px;
+  }
+
+  .hero-section {
+    padding: 0 30px;
+    align-items: flex-start;
+  }
+
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+
+  .underline {
+    width: 200px;
+  }
+
+  .hero-section p {
+    font-size: 0.85rem;
+  }
+
+  .explore-btn {
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .welcome-link-container {
+    margin-top: 60px;
+  }
+
+  .welcome-link {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  .side-menu {
+    width: 250px;
+  }
+
+  .slider-container {
+    width: 90%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .slide-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 0 20px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+
+  .underline {
+    width: 150px;
+  }
+
+  .explore-btn {
+    width: 100%;
+    font-size: 0.7rem;
+    height: 32px;
+  }
+
+  .welcome-link {
+    font-size: 0.9rem;
+    padding: 6px 14px;
+  }
+
+  .side-menu {
+    width: 220px;
+    padding: 20px 15px;
+  }
+
+  .menu-icons a {
+    font-size: 1.2rem;
+  }
+
+  .menu-close {
+    font-size: 1.4rem;
+  }
+
+  .slide-text {
+    font-size: 0.9rem;
+  }
+
+  .hire-me-btn {
+    padding: 6px 16px;
+    font-size: 0.8rem;
+  }
+}

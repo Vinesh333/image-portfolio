@@ -1,53 +1,78 @@
-
+/* Scrollbar Styling */
 .gallery-container::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  .gallery-container::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  
-  .gallery-container::-webkit-scrollbar-thumb {
-    background: rgba(8, 8, 8, 0.872);
-    border-radius: 4px;
-  }
-  
-  .gallery-container::-webkit-scrollbar-thumb:hover {
-    background: rgb(240, 239, 239);
-  }
-  
-  .image-scroller::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for Webkit browsers */
-  }
-  
-  .gallery-container {
-    position: relative;
-    overflow: hidden; /* Ensure the container doesn't show scrollbars */
-  }
-  
-  .gallery-image {
-    will-change: transform; /* Optimize performance for transforms */
-  }
-  /* styles/GalleryApp.css */
+  width: 8px;
+}
 
+.gallery-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.gallery-container::-webkit-scrollbar-thumb {
+  background: rgba(8, 8, 8, 0.872);
+  border-radius: 4px;
+}
+
+.gallery-container::-webkit-scrollbar-thumb:hover {
+  background: rgb(240, 239, 239);
+}
+
+.image-scroller::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit browsers */
+}
+
+/* Gallery Layout */
+.gallery-container {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Image Optimization */
+.gallery-image {
+  will-change: transform;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Text Styles */
 .magic-title {
   font-size: 3rem;
   font-weight: bold;
   color: #f1f1f1;
+  text-align: center;
 }
 
 .magic-subtitle {
   font-size: 1.8rem;
-  font-family: 'Great Vibes', cursive;
-  font-family: 'Dancing Script', cursive;
-
-
+  font-family: 'Great Vibes', cursive, 'Dancing Script', cursive;
   color: #e8ffe1;
   margin-bottom: 30px;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  text-align: center;
+} 
+
+.magic-title,
+.magic-subtitle {
+  transition: all 0.4s ease-in-out;
 }
 
+/* 🔁 MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .magic-title {
+    font-size: 2rem;
+  }
 
-.magic-title, .magic-subtitle {
-  transition: all 0.4s ease-in-out;
+  .magic-subtitle {
+    font-size: 1.2rem;
+  } 
+
+  .gallery-container {
+    padding: 0.5rem;
+  }
+
+  .gallery-image {
+    width: 100%;
+    height: auto;
+  }
 }

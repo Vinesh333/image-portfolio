@@ -101,7 +101,7 @@
 
 .prev-btn:hover,
 .next-btn:hover {
-  color: #555;
+  color: #555; 
 }
 
 .fullscreen-overlay {
@@ -212,4 +212,61 @@
   width: 100%;
   height: 100%;
   display: block;
+}
+@media (max-width: 768px) {
+  .gallery-upload-container {
+    padding: 10px;
+    font-size: 28px;
+  }
+
+  .gallery-display {
+    padding: 15px;
+  }
+
+  .image-container {
+    height: 200px;
+  }
+
+  .fullscreen-image {
+    height: 60vh;
+  }
+
+  .download-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .gallery-mini-title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-upload-container {
+    font-size: 22px;
+  }
+
+  .image-container {
+    height: 160px;
+  }
+
+  .prev-btn,
+  .next-btn {
+    font-size: 24px;
+    padding: 5px;
+  }
+
+  .fullscreen-image {
+    height: 50vh;
+  }
+
+  .download-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .close-btn {
+    font-size: 16px;
+    padding: 6px;
+  }
 }

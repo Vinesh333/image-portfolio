@@ -4,18 +4,38 @@
   padding: 20px;
   text-align: center;
   color: white;
+  box-sizing: border-box;
 }
 
 .gallery-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
 }
 
 .gallery-grid img {
   width: 200px;
   height: 200px;
   object-fit: cover;
-  margin: 10px;
   border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+/* Optional hover effect */
+.gallery-grid img:hover {
+  transform: scale(1.03);
+}
+
+/* 🔁 MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .gallery-container {
+    padding: 10px;
+  }
+
+  .gallery-grid img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 }

@@ -47,4 +47,48 @@
   .upload-button:hover {
     background-color: darkgreen;
   }
-  
+  @media (max-width: 768px) {
+  .wallpaper-title {
+    font-size: 1.6rem;
+  }
+
+  .upload-button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .file-input {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .upload-section {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wallpaper-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .upload-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .file-input {
+    width: 100%;
+  }
+
+  .back-button {
+    font-size: 1rem;
+    padding: 6px;
+  }
+}
+body {
+  overflow-x: hidden;
+}
