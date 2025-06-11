@@ -31,9 +31,9 @@ const WelcomePage = () => {
           </div>
         </div>
         <div className="text-section">
-          <h1 className="title">Be Curl, Calm, and Collected</h1>
+          <h1 className="title">Be Clean, Creative, and Consistent</h1>
           <p className="description">
-            Looped is a salon specializing in hair that spirals, swirls, waves, whorls, loops, and curls.
+            Looped is a portfolio showcasing projects that flow, function, scale, adapt, loop, and perform.
           </p>
         </div>
       </div>

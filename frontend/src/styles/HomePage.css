@@ -19,19 +19,12 @@ body {
   display: flex;
   flex-direction: column;
   animation: oceanWaves 10s ease-in-out infinite alternate;
-  
 }
 
-/* Optional ocean-like wave effect */
 @keyframes oceanWaves {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 0% 100%;
-  }
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
 }
-
 
 /* Navbar */
 .navbar {
@@ -63,6 +56,7 @@ body {
 .menu-icon {
   font-size: 1.5rem;
   cursor: pointer;
+  position: relative;
 }
 
 /* Hero Section */
@@ -72,7 +66,7 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 0 100px;
-  
+  position: relative;
 }
 
 .hero-header {
@@ -81,6 +75,7 @@ body {
   align-items: center;
   width: 100%;
   margin-bottom: 10px;
+  z-index: 1000;
 }
 
 .hero-section h1 {
@@ -92,61 +87,33 @@ body {
 
 .underline {
   width: 550px;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin: 10px 0 20px;
   border: 1px solid white;
+  z-index: 1000;
 }
 
 .hero-section p {
   max-width: 600px;
   font-size: 0.9rem;
-  margin-bottom: 30px;
   line-height: 1.6;
   color: white;
-}
-
-/* Explore Now button */
-.explore-btn {
-  width: 120px;
-  height: 35px;
-  font-size: 0.75rem;
-  background-color: white;
-  color: black;
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  align-self: flex-start;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.explore-btn:hover {
-  background-color: #ddd;
+  z-index: 1000;
 }
 
 /* Welcome Link */
-.welcome-link-container {
-  margin-top: 120px;
-  align-self: flex-end;
-}
-
-.welcome-link {
+.styled-welcome-link {
   font-size: 1.2rem;
-  font-weight: bold;
   font-family: 'Caveat', cursive;
   color: white;
   text-decoration: none;
   padding: 10px 20px;
-  border: 2px solid white;
   border-radius: 10px;
   transition: all 0.4s ease;
+  z-index: 1000;
   animation: colorChange 2s infinite;
 }
 
-.welcome-link:hover {
+.styled-welcome-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
   text-decoration: underline;
 }
@@ -168,25 +135,21 @@ body {
   height: 100vh;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   box-shadow: -2px 0 12px rgba(0, 0, 0, 0.6);
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   transition: right 0.4s ease;
   z-index: 999;
   padding: 30px 20px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
 }
 
 .side-menu.open {
   right: 0;
 }
 
-/* Close Button */
 .menu-close {
   align-self: flex-end;
   margin-right: 10px;
@@ -195,7 +158,6 @@ body {
   cursor: pointer;
 }
 
-/* Icon Section */
 .menu-icons {
   display: flex;
   flex-direction: column;
@@ -214,7 +176,6 @@ body {
   color: #ffd700;
 }
 
-/* Hire Me */
 .menu-hire {
   margin-bottom: 40px;
   width: 100%;
@@ -222,7 +183,6 @@ body {
   justify-content: center;
 }
 
-/* Slider inside menu */
 .slider-container {
   width: 260px;
   height: 100px;
@@ -256,6 +216,8 @@ body {
 .hire-me-btn:hover {
   background-color: #ddd;
 }
+
+/* Sea Creatures */
 .sea-animals {
   position: absolute;
   top: 0;
@@ -263,7 +225,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  pointer-events: none; /* So clicks go through */
+  pointer-events: none;
   z-index: 0;
 }
 
@@ -274,45 +236,20 @@ body {
   opacity: 0.8;
 }
 
-/* Position each animal randomly */
-.fish {
-  left: 10%;
-  bottom: -10%;
-  animation-delay: 0s;
-}
+.fish { left: 10%; bottom: -10%; animation-delay: 0s; }
+.turtle { left: 40%; bottom: -15%; animation-delay: 3s; }
+.octopus { left: 70%; bottom: -20%; animation-delay: 6s; }
+.bubble { left: 85%; bottom: -5%; animation-delay: 1.5s; }
+.dolphin { left: 20%; bottom: -10%; animation-delay: 2s; }
+.crab { left: 50%; bottom: -15%; animation-delay: 4s; }
+.star { left: 80%; bottom: -10%; animation-delay: 5s; }
 
-.turtle {
-  left: 40%;
-  bottom: -15%;
-  animation-delay: 3s;
-}
-
-.octopus {
-  left: 70%;
-  bottom: -20%;
-  animation-delay: 6s;
-}
-
-.bubble {
-  left: 85%;
-  bottom: -5%;
-  animation-delay: 1.5s;
-}
-
-/* Floating animation */
 @keyframes floatUp {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-120vh) rotate(360deg);
-    opacity: 0;
-  }
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
 }
+
 .creature {
   cursor: pointer;
   font-size: 2rem;
@@ -324,15 +261,103 @@ body {
 }
 
 @keyframes explode {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(3);
-    opacity: 0;
-  }
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
 }
+
+/* Draggable Arrow */
+.draggable-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  z-index: 1100;
+}
+
+.draggable-arrow:hover {
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.draggable-arrow i {
+  font-size: 20px;
+}
+
+.draggable-arrow:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+/* Shutter Section */
+.shutter-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1a1a1a;
+  color: white;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.shutter-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.shutter-content h1 {
+  font-size: 2.5rem;
+  margin-top: 20px;
+  color: #00f0ff;
+}
+
+.shutter-content h2 {
+  font-size: 1.8rem;
+  margin-top: 10px;
+  color: #ccc;
+}
+
+.shutter-content p {
+  font-size: 1.1rem;
+  margin-top: 15px;
+  color: #bbb;
+}
+
+/* Back Button */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 1060;
+  transition: background-color 0.2s ease;
+}
+
+.back-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Media Queries */
 @media (max-width: 1024px) {
   .hero-section {
     padding: 0 60px;
@@ -373,16 +398,7 @@ body {
     font-size: 0.85rem;
   }
 
-  .explore-btn {
-    width: 100%;
-    max-width: 180px;
-  }
-
-  .welcome-link-container {
-    margin-top: 60px;
-  }
-
-  .welcome-link {
+  .styled-welcome-link {
     font-size: 1rem;
     padding: 8px 16px;
   }
@@ -403,6 +419,10 @@ body {
 }
 
 @media (max-width: 480px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
   .hero-section {
     padding: 0 20px;
   }
@@ -415,13 +435,7 @@ body {
     width: 150px;
   }
 
-  .explore-btn {
-    width: 100%;
-    font-size: 0.7rem;
-    height: 32px;
-  }
-
-  .welcome-link {
+  .styled-welcome-link {
     font-size: 0.9rem;
     padding: 6px 14px;
   }
@@ -446,5 +460,14 @@ body {
   .hire-me-btn {
     padding: 6px 16px;
     font-size: 0.8rem;
+  }
+
+  .draggable-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .draggable-arrow i {
+    font-size: 18px;
   }
 }

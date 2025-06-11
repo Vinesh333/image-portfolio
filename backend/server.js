@@ -3,10 +3,37 @@ const multer = require("multer");
 const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
+const mongoose = require("mongoose");
 
 const app = express();
 const PORT = 5000;
 
+// MongoDB Connection
+mongoose.connect("mongodb://127.0.0.1:27017/hireFormsDB", {
+});
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", () => console.log("✅ Connected to MongoDB"));
+
+// HireForm Schema
+const hireFormSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  company: String,
+  phone: String,
+  projectType: String,
+  duration: String,
+  budget: String,
+  comments: String,
+  referral: String,
+  submittedAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+const HireForm = mongoose.model("HireForm", hireFormSchema);
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -68,41 +95,25 @@ app.post("/gallery-upload", uploadGalleryNow.array("images", 10), (req, res) => 
   res.json({ imageUrls });
 });
 
-// Save Hire Me Form Data to a JSON file
-app.post("/hire", (req, res) => {
-  const formData = req.body;
-  const formFilePath = path.join(__dirname, "hire-forms.json");
-
-  let existingData = [];
-  if (fs.existsSync(formFilePath)) {
-    const raw = fs.readFileSync(formFilePath);
-    existingData = JSON.parse(raw);
+// Save Hire Me Form Data to MongoDB
+app.post("/hire", async (req, res) => {
+  try {
+    const newEntry = new HireForm(req.body);
+    await newEntry.save();
+    res.status(200).json({ message: "Form submitted and saved to MongoDB!" });
+  } catch (error) {
+    console.error("Error saving form:", error);
+    res.status(500).json({ error: "Failed to save form" });
   }
-
-  existingData.push({ ...formData, submittedAt: new Date().toISOString() });
-
-  fs.writeFileSync(formFilePath, JSON.stringify(existingData, null, 2));
-
-  res.status(200).json({ message: "Form submitted and saved successfully!" });
 });
 
-// View form submissions in a basic HTML table
-app.get("/view-submissions", (req, res) => {
-  const filePath = path.join(__dirname, "hire-forms.json"); // ✅ FIXED filename
+// View submissions in basic HTML table (from MongoDB)
+app.get("/view-submissions", async (req, res) => {
+  try {
+    const submissions = await HireForm.find().sort({ submittedAt: -1 });
 
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err) return res.status(500).send("Unable to read submissions.");
-
-    let submissions;
-    try {
-      submissions = JSON.parse(data);
-    } catch (parseErr) {
-      return res.status(500).send("Error parsing submissions data.");
-    }
-
-    let tableRows = submissions
-      .map(
-        (entry, index) => `
+    const tableRows = submissions
+      .map((entry, index) => `
         <tr>
           <td>${index + 1}</td>
           <td>${entry.name}</td>
@@ -114,9 +125,8 @@ app.get("/view-submissions", (req, res) => {
           <td>${entry.budget}</td>
           <td>${entry.comments}</td>
           <td>${entry.referral}</td>
-        </tr>`
-      )
-      .join("");
+        </tr>
+      `).join("");
 
     const html = `
       <html>
@@ -177,9 +187,11 @@ app.get("/view-submissions", (req, res) => {
         </body>
       </html>
     `;
-
     res.send(html);
-  });
+  } catch (err) {
+    console.error("Error loading submissions:", err);
+    res.status(500).send("Failed to load submissions.");
+  }
 });
 
 app.listen(PORT, () => {
